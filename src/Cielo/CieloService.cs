@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using System.Configuration;
+using RestSharp;
 using Cielo.Requests;
 
 namespace Cielo
@@ -7,8 +8,11 @@ namespace Cielo
     {
         private readonly string _endPointUrl;
 
-        public CieloService(string endPointUrl)
+        public CieloService(string endPointUrl = null)
         {
+            if (string.IsNullOrEmpty(endPointUrl))
+                endPointUrl = ConfigurationManager.AppSettings["cielo.webservice.url"];
+
             _endPointUrl = endPointUrl;
         }
 

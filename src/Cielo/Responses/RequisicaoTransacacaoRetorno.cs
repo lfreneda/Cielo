@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Xml;
+﻿using System.Linq;
 using System.Xml.Linq;
-using Awesomely.Extensions;
 
 namespace Cielo.Responses
 {
@@ -23,10 +17,10 @@ namespace Cielo.Responses
         public RequisicaoTransacacaoRetorno(string content)
         {
             Content = content;
-            BuildProperties();
+            BindProperties();
         }
 
-        private void BuildProperties()
+        private void BindProperties()
         {
             var document = XDocument.Parse(Content);
             
