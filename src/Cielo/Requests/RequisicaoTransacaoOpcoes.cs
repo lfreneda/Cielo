@@ -1,6 +1,6 @@
 using Cielo.Enums;
 
-namespace Cielo
+namespace Cielo.Requests
 {
     public class RequisicaoTransacaoOpcoes
     {
@@ -8,10 +8,7 @@ namespace Cielo
         public bool Capturar { get; private set; }
         public bool GerarToken { get; private set; }
 
-        public RequisicaoTransacaoOpcoes(
-            TipoAutorizacao tipoAutorizacao,
-            bool capturar = false,
-            bool gerarToken = false)
+        public RequisicaoTransacaoOpcoes(TipoAutorizacao tipoAutorizacao, bool capturar = false, bool gerarToken = false)
         {
             TipoAutorizacao = tipoAutorizacao;
             Capturar = capturar;

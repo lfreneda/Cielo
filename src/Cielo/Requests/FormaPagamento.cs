@@ -1,6 +1,6 @@
 using Cielo.Enums;
 
-namespace Cielo
+namespace Cielo.Requests
 {
     public class FormaPagamento
     {

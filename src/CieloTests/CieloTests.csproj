@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaTransacaoTests.cs" />
     <Compile Include="DateTimeExtensionsTests.cs" />
     <Compile Include="DecimalExtensionsTests.cs" />
     <Compile Include="Fake\ConfiguratioFake.cs" />
