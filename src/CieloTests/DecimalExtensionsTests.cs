@@ -2,7 +2,7 @@ using Cielo.Extensions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace CieloTests.Extensions
+namespace CieloTests
 {
     [TestFixture]
     public class DecimalExtensionsTests
