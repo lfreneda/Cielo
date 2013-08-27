@@ -5,6 +5,6 @@ namespace Cielo
 {
     public interface ICieloService
     {
-        IRestResponse Send(IRequestXml request);
+        IRestResponse Execute(ICieloRequest cieloRequest);
     }
 }

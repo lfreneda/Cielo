@@ -1,6 +1,6 @@
 namespace Cielo.Requests
 {
-    public interface IRequestXml
+    public interface ICieloRequest
     {
         string ToXml(bool indent);
     }

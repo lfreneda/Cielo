@@ -60,13 +60,14 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DecimalExtensions.cs" />
     <Compile Include="Requests\ConsultaTransacao.cs" />
-    <Compile Include="Requests\IRequestXml.cs" />
+    <Compile Include="Requests\ICieloRequest.cs" />
     <Compile Include="Configuration\IConfiguracao.cs" />
     <Compile Include="Enums\Idioma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Pedido.cs" />
     <Compile Include="Requests\RequisicaoTransacao.cs" />
     <Compile Include="Requests\RequisicaoTransacaoOpcoes.cs" />
+    <Compile Include="Responses\RequisicaoTransacacaoRetorno.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

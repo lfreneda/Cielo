@@ -7,7 +7,7 @@ using DynamicBuilder;
 
 namespace Cielo.Requests
 {
-    public class RequisicaoTransacao : IRequestXml
+    public class RequisicaoTransacao : ICieloRequest
     {
         private readonly IConfiguracao _configuration;
         private readonly FormaPagamento _formaPagamento;

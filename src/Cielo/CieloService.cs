@@ -12,12 +12,12 @@ namespace Cielo
             _endPointUrl = endPointUrl;
         }
 
-        public IRestResponse Send(IRequestXml request)
+        public IRestResponse Execute(ICieloRequest cieloRequest)
         {
             var client = new RestClient(_endPointUrl);
-            var postRequest = new RestRequest(Method.POST);
-            postRequest.AddParameter("mensagem", request.ToXml(false));
-            return client.Execute(postRequest);
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("mensagem", cieloRequest.ToXml(false));
+            return client.Execute(request);
         }
     }
 }

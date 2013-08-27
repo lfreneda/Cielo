@@ -4,7 +4,7 @@ using DynamicBuilder;
 
 namespace Cielo.Requests
 {
-    public class ConsultaTransacao : IRequestXml
+    public class ConsultaTransacao : ICieloRequest
     {
         private readonly string _tid;
         private readonly IConfiguracao _configuration;
