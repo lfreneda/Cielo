@@ -1,6 +1,5 @@
 ﻿using System;
 using Awesomely.Extensions;
-using Cielo;
 using Cielo.Enums;
 using Cielo.Requests;
 using CieloTests.Fake;
