@@ -2,7 +2,7 @@
 using Awesomely.Extensions;
 using Cielo.Enums;
 using Cielo.Requests;
-using CieloTests.Fake;
+using CieloTests.Configuration;
 using FluentAssertions;
 using NUnit.Framework;
 

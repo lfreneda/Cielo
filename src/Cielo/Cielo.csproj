@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Status.cs" />
     <Compile Include="Enums\TipoAutorizacao.cs" />
     <Compile Include="Enums\Bandeira.cs" />
     <Compile Include="Configuration\ConfiguracaoDefault.cs" />
     <Compile Include="CieloService.cs" />
+    <Compile Include="Extensions\StatusExtensions.cs" />
     <Compile Include="ICieloService.cs" />
     <Compile Include="Requests\FormaPagamento.cs" />
     <Compile Include="Enums\TipoDaVenda.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Requests\Pedido.cs" />
     <Compile Include="Requests\RequisicaoTransacao.cs" />
     <Compile Include="Requests\RequisicaoTransacaoOpcoes.cs" />
+    <Compile Include="Responses\ConsultaRetorno.cs" />
     <Compile Include="Responses\RequisicaoTransacacaoRetorno.cs" />
   </ItemGroup>
   <ItemGroup>

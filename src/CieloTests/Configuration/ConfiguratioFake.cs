@@ -1,7 +1,7 @@
 ﻿using Cielo.Configuration;
 using Cielo.Enums;
 
-namespace CieloTests.Fake
+namespace CieloTests.Configuration
 {
     public class ConfiguratioFake : IConfiguracao
     {
@@ -26,5 +26,4 @@ namespace CieloTests.Fake
             get { return "986"; }
         }
     }
-
 }
