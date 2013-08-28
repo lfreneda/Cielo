@@ -1,10 +1,11 @@
 ﻿using Cielo.Requests;
-using RestSharp;
+using Cielo.Responses;
 
 namespace Cielo
 {
     public interface ICieloService
     {
-        IRestResponse Execute(ICieloRequest cieloRequest);
+        CreateTransactionResponse CreateTransaction(CreateTransactionRequest request);
+        CheckTransactionResponse CheckTransaction(CheckTransactionRequest request);
     }
 }

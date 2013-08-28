@@ -56,15 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsultaRetornoTests.cs" />
-    <Compile Include="ConsultaTransacaoTests.cs" />
+    <Compile Include="CheckTransactionResponseTests.cs" />
+    <Compile Include="CheckTransactionRequestTests.cs" />
     <Compile Include="DateTimeExtensionsTests.cs" />
     <Compile Include="DecimalExtensionsTests.cs" />
-    <Compile Include="Configuration\ConfiguratioFake.cs" />
+    <Compile Include="Configuration\FakeConfiguration.cs" />
     <Compile Include="Configuration\CustomConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequisicaoTransacaoRetornoTests.cs" />
-    <Compile Include="RequisicaoTransacaoTests.cs" />
+    <Compile Include="CreateTransactionResponseTests.cs" />
+    <Compile Include="CreateTransactionRequestTests.cs" />
     <Compile Include="StatusExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cielo", "Cielo\Cielo.csproj", "{912073F3-3150-48CD-8A0C-582B03D7C052}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CieloTests", "CieloTests\CieloTests.csproj", "{766B9415-1C19-4FA5-8A6C-B21A7F898A89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{777D284A-6ACB-4E66-8A2F-D6CD5F431D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cielo.Web.Sample", "Cielo.Web.Sample\Cielo.Web.Sample.csproj", "{12E09E9C-66F5-427E-BBE2-E37DF5A5D125}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,8 +23,15 @@ Global
 		{766B9415-1C19-4FA5-8A6C-B21A7F898A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{766B9415-1C19-4FA5-8A6C-B21A7F898A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{766B9415-1C19-4FA5-8A6C-B21A7F898A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E09E9C-66F5-427E-BBE2-E37DF5A5D125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E09E9C-66F5-427E-BBE2-E37DF5A5D125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E09E9C-66F5-427E-BBE2-E37DF5A5D125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E09E9C-66F5-427E-BBE2-E37DF5A5D125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12E09E9C-66F5-427E-BBE2-E37DF5A5D125} = {777D284A-6ACB-4E66-8A2F-D6CD5F431D8B}
 	EndGlobalSection
 EndGlobal

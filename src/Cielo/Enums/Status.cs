@@ -2,16 +2,16 @@ namespace Cielo.Enums
 {
     public enum Status
     {
-        SemStatus = -1,
-        Criada = 0,
-        EmAndamento = 1,
-        Autenticada = 2,
-        NaoAutenticada = 3,
-        Autorizada = 4,
-        NaoAutorizada = 5,
-        Capturada = 6,
-        Cancelada = 9,
-        EmAutenticacao = 10,
-        EmCancelamento = 12
+        Default = -1,
+        Created = 0,
+        InProgress = 1,
+        Authenticated = 2,
+        NotAuthenticated = 3,
+        Authorized = 4,
+        NotAuthorized = 5,
+        Success = 6,
+        Canceled = 9,
+        AuthenticationProgress = 10,
+        CancellationProgress = 12
     }
 }

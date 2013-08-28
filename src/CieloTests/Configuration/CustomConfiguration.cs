@@ -3,12 +3,12 @@ using Cielo.Enums;
 
 namespace CieloTests.Configuration
 {
-    public class CustomConfiguration : IConfiguracao
+    public class CustomConfiguration : IConfiguration
     {
-        public string ChaveEstabelecimento { get; set; }
-        public string NumeroEstabelecimento { get; set; }
-        public string UrlRetorno { get; set; }
-        public Idioma Idioma { get; set; }
-        public string MoedaId { get; set; }
+        public string CustomerKey { get; set; }
+        public string CustomerId { get; set; }
+        public string ReturnUrl { get; set; }
+        public Language Language { get; set; }
+        public string CurrencyId { get; set; }
     }
 }

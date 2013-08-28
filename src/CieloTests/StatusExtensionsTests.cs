@@ -23,31 +23,31 @@ namespace CieloTests
          *  Transação em Cancelamento .....12
          */
 
-        [TestCase("0", Status.Criada)]
-        [TestCase("1", Status.EmAndamento)]
-        [TestCase("2", Status.Autenticada)]
-        [TestCase("3", Status.NaoAutenticada)]
-        [TestCase("4", Status.Autorizada)]
-        [TestCase("5", Status.NaoAutorizada)]
-        [TestCase("6", Status.Capturada)]
-        [TestCase("9", Status.Cancelada)]
-        [TestCase("10", Status.EmAutenticacao)]
-        [TestCase("12", Status.EmCancelamento)]
+        [TestCase("0", Status.Created)]
+        [TestCase("1", Status.InProgress)]
+        [TestCase("2", Status.Authenticated)]
+        [TestCase("3", Status.NotAuthenticated)]
+        [TestCase("4", Status.Authorized)]
+        [TestCase("5", Status.NotAuthorized)]
+        [TestCase("6", Status.Success)]
+        [TestCase("9", Status.Canceled)]
+        [TestCase("10", Status.AuthenticationProgress)]
+        [TestCase("12", Status.CancellationProgress)]
         public void GivenStringCodeAsString_ShouldResultInStatusExpected(string statusCodeAsString, Status statusExpected)
         {
             statusCodeAsString.ToStatus().Should().Be(statusExpected);
         }
 
-        [TestCase(0, Status.Criada)]
-        [TestCase(1, Status.EmAndamento)]
-        [TestCase(2, Status.Autenticada)]
-        [TestCase(3, Status.NaoAutenticada)]
-        [TestCase(4, Status.Autorizada)]
-        [TestCase(5, Status.NaoAutorizada)]
-        [TestCase(6, Status.Capturada)]
-        [TestCase(9, Status.Cancelada)]
-        [TestCase(10, Status.EmAutenticacao)]
-        [TestCase(12, Status.EmCancelamento)]
+        [TestCase(0, Status.Created)]
+        [TestCase(1, Status.InProgress)]
+        [TestCase(2, Status.Authenticated)]
+        [TestCase(3, Status.NotAuthenticated)]
+        [TestCase(4, Status.Authorized)]
+        [TestCase(5, Status.NotAuthorized)]
+        [TestCase(6, Status.Success)]
+        [TestCase(9, Status.Canceled)]
+        [TestCase(10, Status.AuthenticationProgress)]
+        [TestCase(12, Status.CancellationProgress)]
         public void GivenStringCodeAsString_ShouldResultInStatusExpected(int statusCodeAsInt, Status statusExpected)
         {
             statusCodeAsInt.ToStatus().Should().Be(statusExpected);
