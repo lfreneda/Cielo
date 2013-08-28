@@ -9,12 +9,19 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-
     <div class="container">
         <div class="page-header">
             <h1>Confirmation page <small>transaction completed</small></h1>
         </div>
         <h2>@ViewBag.Status</h2>
+
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("Callback", "Cart")" class="btn btn-primary" type="submit">
+                    Refresh page
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

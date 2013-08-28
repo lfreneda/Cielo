@@ -40,7 +40,6 @@ namespace Cielo.Web.Sample.Controllers
         {
             var checkTransactionRequest = new CheckTransactionRequest((string)Session["tid"]);
             var response = _cieloService.CheckTransaction(checkTransactionRequest);
-            
             ViewBag.Status = response.Status.ToString();
 
             return View();
