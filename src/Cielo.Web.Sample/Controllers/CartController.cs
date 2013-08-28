@@ -26,11 +26,12 @@ namespace Cielo.Web.Sample.Controllers
         [HttpPost]
         public ActionResult Checkout()
         {
-            var order = new Order(_randomOrderId, 4700.20m, DateTime.Now, "Goku e GokuSSJ");
-            var paymentMethod = new PaymentMethod(CreditCard.Visa, PurchaseType.Credit);
+            var order = new Order(_randomOrderId, 4700.00m, DateTime.Now, "Goku e GokuSSJ");
+            var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
             var options = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: true);
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options);
             var response = _cieloService.CreateTransaction(createTransactionRequest);
+
             Session["tid"] = response.Tid;
             return Redirect(response.AuthenticationUrl);
         }
@@ -39,7 +40,10 @@ namespace Cielo.Web.Sample.Controllers
         {
             var checkTransactionRequest = new CheckTransactionRequest((string)Session["tid"]);
             var response = _cieloService.CheckTransaction(checkTransactionRequest);
-            return Content(response.Status.ToString());
+            
+            ViewBag.Status = response.Status.ToString();
+
+            return View();
         }
     }
 }
