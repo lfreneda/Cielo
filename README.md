@@ -18,18 +18,18 @@ Modelo CieloBuyPage
 	var order = new Order("12345", 4700.00m, DateTime.Now, "Goku e GokuSSJ");
 	var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
 	var options = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: true);
-	var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options);
+	CreateTransactionResponse createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options);
 	
 	var response = _cieloService.CreateTransaction(createTransactionRequest);
 	
-O objeto __response__ contem a url para qual o cliente precisa ser redirecionado (ambiente da Cielo, onde ele vai informar os dados do cartão e etc) e o Tid (identificador único daquela transação) que usaremos mais tarde para verificar o status da transação.
+O objeto __response__ (CreateTransactionResponse) contem a url para qual o cliente precisa ser redirecionado (ambiente da Cielo, onde ele vai informar os dados do cartão e etc) e o Tid (identificador único daquela transação) que usaremos mais tarde para verificar o status da transação.
 
 ### Verificando status da transação
 		var tid = GetTid() // Recuperar o tid da transação (db,session,whatever)
 		var checkTransactionRequest = new CheckTransactionRequest(tid);
-		var response = _cieloService.CheckTransaction(checkTransactionRequest);
+		CheckTransactionResponse response = _cieloService.CheckTransaction(checkTransactionRequest);
 
-O objeto __response__ dessa vez contem o Status da transação que pode conter os seguintes valores:
+O objeto __response__ (CheckTransactionResponse) dessa vez contem o Status da transação que pode conter os seguintes valores:
 
 ### 
         Default = -1,
