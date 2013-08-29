@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Web.Mvc;
 using Cielo.Enums;
 using Cielo.Requests;
+using Cielo.Responses;
 
 namespace Cielo.Web.Sample.Controllers
 {
@@ -30,7 +31,7 @@ namespace Cielo.Web.Sample.Controllers
             var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
             var options = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: true);
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options);
-            var response = _cieloService.CreateTransaction(createTransactionRequest);
+            CreateTransactionResponse response = _cieloService.CreateTransaction(createTransactionRequest);
 
             Session["tid"] = response.Tid;
             return Redirect(response.AuthenticationUrl);
@@ -39,7 +40,7 @@ namespace Cielo.Web.Sample.Controllers
         public ActionResult Callback()
         {
             var checkTransactionRequest = new CheckTransactionRequest((string)Session["tid"]);
-            var response = _cieloService.CheckTransaction(checkTransactionRequest);
+            CheckTransactionResponse response = _cieloService.CheckTransaction(checkTransactionRequest);
             ViewBag.Status = response.Status.ToString();
 
             return View();
