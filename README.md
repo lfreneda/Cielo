@@ -15,7 +15,7 @@ Modelo CieloBuyPage
 
 ### Criando uma transação
 
-	var order = new Order("12345", 4700.00m, DateTime.Now, "Goku e GokuSSJ");
+	var order = new Order("12345", 4700.00m, DateTime.Now, "Descrição da ordem~");
 	var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
 	var options = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: true);
 	var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options);

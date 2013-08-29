@@ -70,8 +70,11 @@
     <Compile Include="Requests\CreateTransactionRequest.cs" />
     <Compile Include="Requests\CreateTransactionOptions.cs" />
     <Compile Include="Responses\CheckTransactionResponse.cs" />
+    <Compile Include="Responses\CieloResponse.cs" />
     <Compile Include="Responses\ICieloResponse.cs" />
     <Compile Include="Responses\CreateTransactionResponse.cs" />
+    <Compile Include="Responses\IPropertyFromXmlConverter.cs" />
+    <Compile Include="Responses\PropertyFromXmlConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
