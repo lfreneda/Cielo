@@ -22,17 +22,16 @@ Modelo CieloBuyPage
 	
 	var response = _cieloService.CreateTransaction(createTransactionRequest);
 	
-response contem a url para qual o cliente precisa ser redirecionado e o Tid (identificador único daquela transação) que usaremos mais tarde para verificar o status da transação.
+O objeto __response__ contem a url para qual o cliente precisa ser redirecionado (ambiente da Cielo, onde ele vai informar os dados do cartão e etc) e o Tid (identificador único daquela transação) que usaremos mais tarde para verificar o status da transação.
 
 ### Verificando status da transação
 		var tid = GetTid() // Recuperar o tid da transação (db,session,whatever)
-		var checkTransactionRequest = new CheckTransactionRequest((tid);
+		var checkTransactionRequest = new CheckTransactionRequest(tid);
 		var response = _cieloService.CheckTransaction(checkTransactionRequest);
 
-response dessa vez contem o Status da transação que pode conter os seguintes valores:
+O objeto __response__ dessa vez contem o Status da transação que pode conter os seguintes valores:
 
-### Enum status
-
+### 
         Default = -1,
         Created = 0,
         InProgress = 1,
@@ -44,6 +43,8 @@ response dessa vez contem o Status da transação que pode conter os seguintes v
         Canceled = 9,
         AuthenticationProgress = 10,
         CancellationProgress = 12
+		
+Projeto de exemplo na solução.
 		
 Modelo LojaBuyPage
 -----
