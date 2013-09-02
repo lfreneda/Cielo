@@ -1,0 +1,27 @@
+﻿@model dynamic
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Confirmation page <small>transaction completed</small></h1>
+        </div>
+        <h2>@ViewBag.Status</h2>
+
+        <div class="row">
+            <div class="span3">
+                <a href="@Url.Action("Callback", "CieloBuyPageCart")" class="btn btn-primary" type="submit">
+                    Refresh page
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

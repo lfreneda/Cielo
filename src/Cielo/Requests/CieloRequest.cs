@@ -10,7 +10,7 @@ namespace Cielo.Requests
 
         protected CieloRequest(IConfiguration configuration)
         {
-            if (configuration == null) configuration = new DefaultConfiguration();
+            if (configuration == null) configuration = new DefaultCieloConfiguration();
 
             Configuration = configuration;
         }

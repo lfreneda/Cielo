@@ -1,0 +1,50 @@
+﻿@model dynamic
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <fieldset class="form-horizontal">
+                <legend>Checkout</legend>
+
+                <div class="control-group">
+                    <label for="creditcard" class="control-label">Credit card number</label>
+                    <div class="controls">
+                        <input id="creditcard" type="text" name="CreditCardNumber" value="6362970000457013" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="expiration-year" class="control-label">Expiration</label>
+                    <div class="controls">
+                        <input id="expiration-year" class="span1" type="text" name="ExpirationYear" maxlength="4" value="2018" />
+                        <input id="expiration-month" class="span1" type="text" name="ExpirationMonth" maxlength="2" value="05" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="securitycode" class="control-label">Security code</label>
+                    <div class="controls">
+                        <input id="securitycode" class="span1" type="text" name="SecurityCode" maxlength="4" value="123" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">
+                        Checkout</button>
+                    <button class="btn btn-danger" disabled="disabled">Cancel</button>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</body>
+</html>

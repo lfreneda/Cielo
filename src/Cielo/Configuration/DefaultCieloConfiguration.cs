@@ -4,7 +4,7 @@ using Cielo.Enums;
 
 namespace Cielo.Configuration
 {
-    public class DefaultConfiguration : IConfiguration
+    public class DefaultCieloConfiguration : IConfiguration
     {
         public string CustomerKey
         {

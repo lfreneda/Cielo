@@ -16,7 +16,7 @@ namespace Cielo.Web.Sample
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Cart", action = "Index" }
+                defaults: new { controller = "Home", action = "Index" }
             );
         }
     }

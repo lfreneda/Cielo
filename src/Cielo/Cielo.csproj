@@ -50,11 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CustomCieloConfiguration.cs" />
     <Compile Include="Enums\SecurityCodeIndicator.cs" />
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Enums\AuthorizationType.cs" />
     <Compile Include="Enums\CreditCard.cs" />
-    <Compile Include="Configuration\DefaultConfiguration.cs" />
+    <Compile Include="Configuration\DefaultCieloConfiguration.cs" />
     <Compile Include="CieloService.cs" />
     <Compile Include="Extensions\StatusExtensions.cs" />
     <Compile Include="ICieloService.cs" />

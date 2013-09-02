@@ -9,17 +9,14 @@ namespace Cielo.Requests.Entities
     {
         public CreditCard CreditCard { get; private set; }
         public PurchaseType PurchaseType { get; private set; }
-        public CreditCardData CreditCardData { get; private set; }
         public int Installments { get; private set; }
 
         public PaymentMethod(CreditCard creditCard,
                              PurchaseType purchaseType,
-                             CreditCardData creditCardData = null,
                              int installments = 1)
         {
             CreditCard = creditCard;
             PurchaseType = purchaseType;
-            CreditCardData = creditCardData;
             Installments = installments;
         }
 

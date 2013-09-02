@@ -12,6 +12,7 @@ namespace Cielo.Requests
     {
         private readonly PaymentMethod _paymentMethod;
         private readonly CreateTransactionOptions _options;
+        private readonly CreditCardData _creditCardData;
         private readonly Order _order;
         public Guid UniqueKey { get; set; }
 
@@ -19,10 +20,12 @@ namespace Cielo.Requests
                 Order order,
                 PaymentMethod paymentMethod,
                 CreateTransactionOptions options,
+                CreditCardData creditCardData = null,
                 IConfiguration configuration = null) : base(configuration)
         {
             _paymentMethod = paymentMethod;
             _options = options;
+            _creditCardData = creditCardData;
             _order = order;
 
             UniqueKey = Guid.NewGuid();
@@ -35,6 +38,11 @@ namespace Cielo.Requests
             xml.requisicao_transacao(new { id = UniqueKey, versao = "1.3.0" }, Xml.Fragment(req =>
             {
                 Affiliate.ToXml(req, Configuration);
+
+                if (_creditCardData != null)
+                {
+                    _creditCardData.ToXml(req);
+                }
 
                 _order.ToXml(req, Configuration);
 

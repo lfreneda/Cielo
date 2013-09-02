@@ -21,7 +21,8 @@ namespace Cielo
         {
             var client = new RestClient(_endPointUrl);
             var request = new RestRequest(Method.POST);
-            request.AddParameter("mensagem", cieloRequest.ToXml(false));
+            var mensagemValue = cieloRequest.ToXml(false);
+            request.AddParameter("mensagem", mensagemValue);
             IRestResponse response = client.Execute(request);
             return response.Content;
         }
