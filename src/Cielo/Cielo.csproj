@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\SecurityCodeIndicator.cs" />
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Enums\AuthorizationType.cs" />
     <Compile Include="Enums\CreditCard.cs" />
@@ -57,7 +58,12 @@
     <Compile Include="CieloService.cs" />
     <Compile Include="Extensions\StatusExtensions.cs" />
     <Compile Include="ICieloService.cs" />
-    <Compile Include="Requests\PaymentMethod.cs" />
+    <Compile Include="Requests\Entities\Affiliate.cs" />
+    <Compile Include="Requests\CieloRequest.cs" />
+    <Compile Include="Requests\Entities\CreditCardData.cs" />
+    <Compile Include="Requests\Entities\CreditCardExpiration.cs" />
+    <Compile Include="Requests\ICieloPartialRequest.cs" />
+    <Compile Include="Requests\Entities\PaymentMethod.cs" />
     <Compile Include="Enums\PurchaseType.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DecimalExtensions.cs" />
@@ -66,9 +72,9 @@
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\Order.cs" />
+    <Compile Include="Requests\Entities\Order.cs" />
     <Compile Include="Requests\CreateTransactionRequest.cs" />
-    <Compile Include="Requests\CreateTransactionOptions.cs" />
+    <Compile Include="Requests\Entities\CreateTransactionOptions.cs" />
     <Compile Include="Responses\CheckTransactionResponse.cs" />
     <Compile Include="Responses\CieloResponse.cs" />
     <Compile Include="Responses\ICieloResponse.cs" />

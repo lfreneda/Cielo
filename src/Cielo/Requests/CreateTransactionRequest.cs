@@ -3,13 +3,13 @@ using System.Globalization;
 using Awesomely.Extensions;
 using Cielo.Configuration;
 using Cielo.Extensions;
+using Cielo.Requests.Entities;
 using DynamicBuilder;
 
 namespace Cielo.Requests
 {
-    public class CreateTransactionRequest : ICieloRequest
+    public class CreateTransactionRequest : CieloRequest
     {
-        private readonly IConfiguration _configuration;
         private readonly PaymentMethod _paymentMethod;
         private readonly CreateTransactionOptions _options;
         private readonly Order _order;
@@ -19,11 +19,8 @@ namespace Cielo.Requests
                 Order order,
                 PaymentMethod paymentMethod,
                 CreateTransactionOptions options,
-                IConfiguration configuration = null)
+                IConfiguration configuration = null) : base(configuration)
         {
-            if (configuration == null) configuration = new DefaultConfiguration();
-
-            _configuration = configuration;
             _paymentMethod = paymentMethod;
             _options = options;
             _order = order;
@@ -31,37 +28,19 @@ namespace Cielo.Requests
             UniqueKey = Guid.NewGuid();
         }
 
-        public string ToXml(bool indent = false)
+        public override string ToXml(bool indent)
         {
             dynamic xml = new Xml { UseDashInsteadUnderscore = true };
             xml.Declaration(encoding: "ISO-8859-1");
             xml.requisicao_transacao(new { id = UniqueKey, versao = "1.3.0" }, Xml.Fragment(req =>
             {
-                req.dados_ec(Xml.Fragment(c =>
-                {
-                    c.numero(_configuration.CustomerId);
-                    c.chave(_configuration.CustomerKey);
-                }));
+                Affiliate.ToXml(req, Configuration);
 
-                req.dados_pedido(Xml.Fragment(c =>
-                {
-                    c.numero(_order.Id);
-                    c.valor(_order.Total.ToCieloFormatValue());
-                    c.moeda(_configuration.CurrencyId);
-                    c.data_hora(_order.Date.ToCieloFormatDate());
-                    c.descricao(_order.Description);
-                    c.idioma(_configuration.Language.GetDescription());
-                    c.soft_descriptor("");
-                }));
+                _order.ToXml(req, Configuration);
 
-                req.forma_pagamento(Xml.Fragment(c =>
-                {
-                    c.bandeira(_paymentMethod.CreditCard.GetDescription());
-                    c.produto(_paymentMethod.PurchaseType.GetDescription());
-                    c.parcelas(_paymentMethod.Installments);
-                }));
+                _paymentMethod.ToXml(req);
 
-                req.url_retorno(_configuration.ReturnUrl);
+                req.url_retorno(Configuration.ReturnUrl);
                 req.autorizar((int)_options.AuthorizationType);
                 req.capturar(_options.Capture.ToString(CultureInfo.InvariantCulture).ToLower());
                 req.gerar_token(_options.GenerateToken.ToString(CultureInfo.InvariantCulture).ToLower());

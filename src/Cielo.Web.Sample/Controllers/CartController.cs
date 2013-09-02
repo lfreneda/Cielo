@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Web.Mvc;
 using Cielo.Enums;
 using Cielo.Requests;
+using Cielo.Requests.Entities;
 using Cielo.Responses;
 
 namespace Cielo.Web.Sample.Controllers

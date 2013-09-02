@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="CheckTransactionResponseTests.cs" />
     <Compile Include="CheckTransactionRequestTests.cs" />
+    <Compile Include="CreditCardExpirationTests.cs" />
     <Compile Include="DateTimeExtensionsTests.cs" />
     <Compile Include="DecimalExtensionsTests.cs" />
     <Compile Include="Configuration\FakeConfiguration.cs" />

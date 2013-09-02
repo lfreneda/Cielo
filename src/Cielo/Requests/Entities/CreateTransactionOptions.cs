@@ -1,6 +1,6 @@
 using Cielo.Enums;
 
-namespace Cielo.Requests
+namespace Cielo.Requests.Entities
 {
     public class CreateTransactionOptions
     {
