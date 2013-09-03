@@ -62,5 +62,12 @@ namespace CieloTests
             var createTransactionResponse = new CreateTransactionResponse(ExpectedResponse);
             createTransactionResponse.AuthenticationUrl.Should().Be("https://ecommerce.cielo.com.br/web/index.cbmp?id=a783251");
         }
+
+        [Test]
+        public void GivenAXmlResponse_PanShouldBeAsExpected()
+        {
+            var createTransactionResponse = new CreateTransactionResponse(ExpectedResponse);
+            createTransactionResponse.Pan.Should().Be("uv9yI5tkhX9jpuCt+dfrtoSVM4U3gIjvrcwMBfZcadE=");
+        }
     }
 }
