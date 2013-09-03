@@ -50,7 +50,7 @@ namespace Cielo.Web.Sample.Controllers
 
             var order = new Order(_randomOrderId, 4700.00m, DateTime.Now, "Goku e GokuSSJ");
             var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
-            var options = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: true);
+            var options = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: true);
             var creditCardData = new CreditCardData(creditCardValues.CreditCardNumber, new CreditCardExpiration(yearExpiration, monthExpiration), SecurityCodeIndicator.Sent, creditCardValues.SecurityCode);
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options, creditCardData, _configuration);
             CreateTransactionResponse response = _cieloService.CreateTransaction(createTransactionRequest);

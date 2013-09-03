@@ -78,7 +78,7 @@ namespace CieloTests
         {
             var order = new Order("624726783", 10.00m, new DateTime(2013, 02, 18, 16, 45, 12), "[origem:172.16.34.66]");
             var paymentMethod = new PaymentMethod(CreditCard.Visa, PurchaseType.Credit);
-            var createTransactionOptions = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: false);
+            var createTransactionOptions = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: false);
             var fakeConfiguration = new FakeConfiguration();
 
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, createTransactionOptions, configuration: fakeConfiguration)
@@ -98,7 +98,7 @@ namespace CieloTests
         {
             var order = new Order("624726783", 10.00m, new DateTime(2013, 02, 18, 16, 45, 12), "[origem:172.16.34.66]");
             var paymentMethod = new PaymentMethod(CreditCard.Visa, PurchaseType.Credit);
-            var createTransactionOptions = new CreateTransactionOptions(AuthorizationType.AuthorizePassByAuthentication, capture: false);
+            var createTransactionOptions = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: false);
             var creditCardData = new CreditCardData("4551870000000183", new CreditCardExpiration(2015, 08), SecurityCodeIndicator.Sent, 973);
             var fakeConfiguration = new FakeConfiguration();
 
