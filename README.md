@@ -3,12 +3,10 @@ Cielo
 
 Integração com o Cielo e-Commerce webservice.
 
-Por ora, a idéia é integrar somento no modelo BuyPageCielo onde a digitação dos dados do cartão será no ambiente da Cielo.
-Possívelmente será expandido para o modelo BuyPageLoja onde digitação dos dados do cartão será no ambiente da Loja.
-
 A integração pretende cobrir apenas compras por cartão de créditos sem parcelamento.
-
 Pull requests são bem vindos \o\~
+
+Projeto de exemplo na solução.
 
 Modelo CieloBuyPage
 -----
@@ -25,7 +23,7 @@ Modelo CieloBuyPage
 O objeto __response__ (CreateTransactionResponse) contém a url para qual o cliente precisa ser redirecionado (ambiente da Cielo, onde ele vai informar os dados do cartão e etc) e o Tid (identificador único daquela transação) que usaremos mais tarde para verificar o status da transação.
 
 ### Verificando status da transação
-		var tid = GetTid() // Recuperar o tid da transação (db,session,whatever)
+		var tid = GetTid(); // Recuperar o tid da transação (db,session,whatever)
 		var checkTransactionRequest = new CheckTransactionRequest(tid);
 		
 		CheckTransactionResponse response = _cieloService.CheckTransaction(checkTransactionRequest);
@@ -63,7 +61,7 @@ Nota: basicamente o que é diferente da integração CieloBuyPage é que dessa v
 
 ### Verificando status da transação
 
-		var tid = GetTid() // Recuperar o tid da transação (db,session,whatever)
+		var tid = GetTid(); // Recuperar o tid da transação (db,session,whatever)
 		var checkTransactionRequest = new CheckTransactionRequest(tid);
 		
 		CheckTransactionResponse response = _cieloService.CheckTransaction(checkTransactionRequest);
@@ -83,5 +81,3 @@ O objeto __response__ (CheckTransactionResponse) dessa vez contém o Status da t
         Canceled = 9,
         AuthenticationProgress = 10,
         CancellationProgress = 12
-		
-Projeto de exemplo na solução.
