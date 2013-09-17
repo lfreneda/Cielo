@@ -78,6 +78,8 @@
     <Compile Include="Requests\Entities\CreateTransactionOptions.cs" />
     <Compile Include="Responses\CheckTransactionResponse.cs" />
     <Compile Include="Responses\CieloResponse.cs" />
+    <Compile Include="Responses\Exceptions\ErrorResponse.cs" />
+    <Compile Include="Responses\Exceptions\ResponseException.cs" />
     <Compile Include="Responses\ICieloResponse.cs" />
     <Compile Include="Responses\CreateTransactionResponse.cs" />
     <Compile Include="Responses\IPropertyFromXmlConverter.cs" />

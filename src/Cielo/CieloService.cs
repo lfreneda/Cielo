@@ -2,6 +2,7 @@
 using System.Data;
 using Cielo.Responses;
 using Cielo.Requests;
+using Cielo.Responses.Exceptions;
 using RestSharp;
 
 namespace Cielo
@@ -17,10 +18,10 @@ namespace Cielo
             _endPointUrl = endPointUrl;
         }
 
-        private string Execute(ICieloRequest cieloRequest)
+        protected virtual string Execute(ICieloRequest cieloRequest)
         {
             var client = new RestClient(_endPointUrl);
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Xml };
             var mensagemValue = cieloRequest.ToXml(false);
             request.AddParameter("mensagem", mensagemValue);
             IRestResponse response = client.Execute(request);
@@ -29,12 +30,24 @@ namespace Cielo
 
         public CreateTransactionResponse CreateTransaction(CreateTransactionRequest request)
         {
-            return new CreateTransactionResponse(Execute(request));
+            var responseContent = Execute(request);
+            CreateExceptionIfError(responseContent);
+            return new CreateTransactionResponse(responseContent);
         }
 
         public CheckTransactionResponse CheckTransaction(CheckTransactionRequest request)
         {
-            return new CheckTransactionResponse(Execute(request));
+            var responseContent = Execute(request);
+            CreateExceptionIfError(responseContent);
+            return new CheckTransactionResponse(responseContent);
+        }
+
+        private static void CreateExceptionIfError(string responseContent)
+        {
+            if (responseContent.Contains("<erro xmlns=\"http://ecommerce.cbmp.com.br\">"))
+            {
+                throw new ResponseException(new ErrorResponse(responseContent));
+            }
         }
     }
 }

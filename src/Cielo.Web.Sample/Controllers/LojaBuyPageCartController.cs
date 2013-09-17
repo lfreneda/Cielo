@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Globalization;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Util;
 using Cielo.Configuration;
 using Cielo.Enums;
 using Cielo.Requests;
 using Cielo.Requests.Entities;
 using Cielo.Responses;
+using Cielo.Responses.Exceptions;
 
 namespace Cielo.Web.Sample.Controllers
 {
@@ -53,10 +56,18 @@ namespace Cielo.Web.Sample.Controllers
             var options = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: true);
             var creditCardData = new CreditCardData(creditCardValues.CreditCardNumber, new CreditCardExpiration(yearExpiration, monthExpiration), SecurityCodeIndicator.Sent, creditCardValues.SecurityCode);
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options, creditCardData, _configuration);
-            CreateTransactionResponse response = _cieloService.CreateTransaction(createTransactionRequest);
 
-            Session["tid"] = response.Tid;
-            return Redirect("CheckStatus");
+            try
+            {
+                CreateTransactionResponse response = _cieloService.CreateTransaction(createTransactionRequest);
+                Session["tid"] = response.Tid;
+                return Redirect("CheckStatus");
+            }
+            catch (ResponseException ex)
+            {
+                ViewBag.MessageError = ex.Message;
+                return View(creditCardValues);
+            }
         }
 
         public ActionResult CheckStatus()

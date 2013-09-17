@@ -15,10 +15,17 @@
             <fieldset class="form-horizontal">
                 <legend>Checkout</legend>
 
+                @if (ViewBag.MessageError != null)
+                { 
+                    <div class="alert alert-error">
+                        @ViewBag.MessageError
+                    </div>
+                }
+
                 <div class="control-group">
                     <label for="creditcard" class="control-label">Credit card number</label>
                     <div class="controls">
-                        <input id="creditcard" type="text" name="CreditCardNumber" value="6362970000457013" />
+                        <input id="creditcard" type="text" name="CreditCardNumber" maxlength="16" value="6362970000457013" />
                     </div>
                 </div>
 

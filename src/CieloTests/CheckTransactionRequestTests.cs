@@ -7,6 +7,7 @@ using NUnit.Framework;
 
 namespace CieloTests
 {
+ 
     [TestFixture]
     public class CheckTransactionRequestTests
     {
