@@ -7,8 +7,6 @@ namespace CieloTests
     [TestFixture]
     public class CreateTransactionResponseTests
     {
-        #region expected xml
-
         private const string ExpectedResponse = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
                                     <transacao versao=""1.3.0"" id=""af32f93c-5e9c-4f44-9478-ccc5aca9319e"" xmlns=""http://ecommerce.cbmp.com.br"">
                                         <tid>100699306908642F1001</tid>
@@ -46,8 +44,6 @@ namespace CieloTests
                                         </autorizacao>
                                         <url-autenticacao>https://ecommerce.cielo.com.br/web/index.cbmp?id=a783251</url-autenticacao>
                                     </transacao>";
-
-        #endregion
 
         [Test]
         public void GivenAXmlReponse_TidShouldBeEqualtTo100699306908642F1001()

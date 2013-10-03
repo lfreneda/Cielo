@@ -59,7 +59,7 @@ namespace Cielo.Web.Sample.Controllers
 
             try
             {
-                CreateTransactionResponse response = _cieloService.CreateTransaction(createTransactionRequest);
+                var response = _cieloService.CreateTransaction(createTransactionRequest);
                 Session["tid"] = response.Tid;
                 return Redirect("CheckStatus");
             }
