@@ -1,15 +1,13 @@
 using System;
 using System.Globalization;
-using Awesomely.Extensions;
+using System.Text.RegularExpressions;
 using Cielo.Configuration;
-using Cielo.Extensions;
 using Cielo.Requests.Entities;
 using DynamicBuilder;
 
-namespace Cielo.Requests
-{
-    public class CreateTransactionRequest : CieloRequest
-    {
+namespace Cielo.Requests {
+
+    public class CreateTransactionRequest : CieloRequest {
         private readonly PaymentMethod _paymentMethod;
         private readonly CreateTransactionOptions _options;
         private readonly CreditCardData _creditCardData;
@@ -21,8 +19,8 @@ namespace Cielo.Requests
                 PaymentMethod paymentMethod,
                 CreateTransactionOptions options,
                 CreditCardData creditCardData = null,
-                IConfiguration configuration = null) : base(configuration)
-        {
+                IConfiguration configuration = null) : base(configuration) {
+
             _paymentMethod = paymentMethod;
             _options = options;
             _creditCardData = creditCardData;
@@ -31,16 +29,13 @@ namespace Cielo.Requests
             UniqueKey = Guid.NewGuid();
         }
 
-        public override string ToXml(bool indent)
-        {
+        public override string ToXml(bool indent) {
             dynamic xml = new Xml { UseDashInsteadUnderscore = true };
             xml.Declaration(encoding: "ISO-8859-1");
-            xml.requisicao_transacao(new { id = UniqueKey, versao = "1.3.0" }, Xml.Fragment(req =>
-            {
+            xml.requisicao_transacao(new { id = UniqueKey, versao = "1.3.0" }, Xml.Fragment(req => {
                 Affiliate.ToXml(req, Configuration);
 
-                if (_creditCardData != null)
-                {
+                if (_creditCardData != null) {
                     _creditCardData.ToXml(req);
                 }
 
@@ -55,6 +50,11 @@ namespace Cielo.Requests
             }));
 
             return xml.ToString(indent);
+        }
+
+        public string ToXmlWithoutSensitiveData(bool indent) {
+            var replaceSensitiveDataPattern = new Regex("<dados-portador>(.*)</dados-portador>");
+            return replaceSensitiveDataPattern.Replace(ToXml(indent), "");
         }
     }
 }
