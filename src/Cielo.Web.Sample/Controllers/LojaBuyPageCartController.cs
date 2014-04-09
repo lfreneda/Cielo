@@ -81,7 +81,7 @@ namespace Cielo.Web.Sample.Controllers
 
         public class CheckoutViewModel
         {
-            public int SecurityCode { get; set; }
+            public string SecurityCode { get; set; }
             public string ExpirationYear { get; set; }
             public string ExpirationMonth { get; set; }
             public string CreditCardNumber { get; set; }
