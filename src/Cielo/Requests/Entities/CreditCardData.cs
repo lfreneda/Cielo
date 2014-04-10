@@ -10,12 +10,12 @@ namespace Cielo.Requests.Entities
         private readonly CreditCardExpiration _expiration;
         public string Expiration { get { return _expiration.ToString(); } }
         public SecurityCodeIndicator Indicator { get; private set; }
-        public int SecurityCode { get; private set; }
+        public string SecurityCode { get; private set; }
 
         public CreditCardData(string creditCardNumber,
                               CreditCardExpiration expiration,
                               SecurityCodeIndicator indicator,
-                              int securityCode)
+                              string securityCode)
         {
             _expiration = expiration;
             CreditCardNumber = creditCardNumber;

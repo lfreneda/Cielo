@@ -8,6 +8,7 @@ using FluentAssertions;
 using NUnit.Framework;
 
 namespace CieloTests {
+
     [TestFixture]
     public class CreateTransactionRequestTests {
 
@@ -48,7 +49,7 @@ namespace CieloTests {
                                         <numero>4551870000000183</numero>
                                         <validade>201508</validade>
                                         <indicador>1</indicador>
-                                        <codigo-seguranca>973</codigo-seguranca>
+                                        <codigo-seguranca>031</codigo-seguranca>
                                         <token/>
                                     </dados-portador>
                                     <dados-pedido>
@@ -121,7 +122,7 @@ namespace CieloTests {
             var order = new Order("624726783", 10.00m, new DateTime(2013, 02, 18, 16, 45, 12), "[origem:172.16.34.66]");
             var paymentMethod = new PaymentMethod(CreditCard.Visa, PurchaseType.Credit);
             var createTransactionOptions = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: false);
-            var creditCardData = new CreditCardData("4551870000000183", new CreditCardExpiration(2015, 08), SecurityCodeIndicator.Sent, 973);
+            var creditCardData = new CreditCardData("4551870000000183", new CreditCardExpiration(2015, 08), SecurityCodeIndicator.Sent, "031");
             var fakeConfiguration = new FakeConfiguration();
 
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, createTransactionOptions, creditCardData, fakeConfiguration) {
@@ -137,11 +138,10 @@ namespace CieloTests {
 
         [Test]
         public void ToXmlWithoutSensitiveData_GivenACreateTransactionRequest_ShouldGenerateAXmlWithoutSensitiveDataAkaCreditCardNumberAndDateAndSecurityCode() {
-
             var order = new Order("624726783", 10.00m, new DateTime(2013, 02, 18, 16, 45, 12), "[origem:172.16.34.66]");
             var paymentMethod = new PaymentMethod(CreditCard.Visa, PurchaseType.Credit);
             var createTransactionOptions = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: false);
-            var creditCardData = new CreditCardData("4551870000000183", new CreditCardExpiration(2015, 08), SecurityCodeIndicator.Sent, 973);
+            var creditCardData = new CreditCardData("4551870000000183", new CreditCardExpiration(2015, 08), SecurityCodeIndicator.Sent, "973");
             var fakeConfiguration = new FakeConfiguration();
 
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, createTransactionOptions, creditCardData, fakeConfiguration) {
