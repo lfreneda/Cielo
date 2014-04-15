@@ -15,6 +15,9 @@ src/*.Publish.xml
 src/_ReSharper.*
 error-*.xml
 
+# NuGet Packages Directory
+packages
+
 ##################
 ## Visual Studio
 ##################
