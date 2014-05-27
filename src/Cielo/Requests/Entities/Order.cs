@@ -1,8 +1,10 @@
 using System;
+using System.ComponentModel;
 using Awesomely.Extensions;
 using Cielo.Configuration;
 using Cielo.Extensions;
 using DynamicBuilder;
+using RestSharp.Extensions;
 
 namespace Cielo.Requests.Entities
 {
@@ -24,7 +26,10 @@ namespace Cielo.Requests.Entities
         public void ToXml(dynamic xmlParent, IConfiguration configuration = null)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
-
+            var lang =
+                configuration.Language.GetType()
+                    .GetField(configuration.Language.ToString())
+                    .GetAttribute<DescriptionAttribute>();
             xmlParent.dados_pedido(Xml.Fragment(c =>
             {
                 c.numero(Id);
@@ -32,7 +37,7 @@ namespace Cielo.Requests.Entities
                 c.moeda(configuration.CurrencyId);
                 c.data_hora(Date.ToCieloFormatDate());
                 c.descricao(Description);
-                c.idioma(configuration.Language.GetDescription());
+                c.idioma(lang.Description);
                 c.soft_descriptor("");
             }));
         }
