@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Luiz Freneda</authors>
+    <owners>Luiz Freneda</owners>
+    <projectUrl>https://github.com/lfreneda/Cielo.git</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright Luiz Freneda 2014</copyright>
+    <tags>e-Commerce Cielo</tags>
+  </metadata>
+</package>
