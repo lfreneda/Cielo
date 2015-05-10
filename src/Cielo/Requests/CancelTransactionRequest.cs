@@ -1,14 +1,14 @@
-using System;
+﻿using System;
 using Cielo.Configuration;
 using DynamicBuilder;
 
 namespace Cielo.Requests
 {
-    public class CheckTransactionRequest : CieloRequest
+    public class CancelTransactionRequest : CieloRequest
     {
         private readonly string _tid;
 
-        public CheckTransactionRequest(string tid, IConfiguration configuration = null)
+        public CancelTransactionRequest(string tid, IConfiguration configuration = null)
             : base(configuration)
         {
             _tid = tid;
@@ -22,7 +22,7 @@ namespace Cielo.Requests
             dynamic xml = new Xml { UseDashInsteadUnderscore = true };
             xml.Declaration(encoding: "ISO-8859-1");
 
-            xml.requisicao_consulta(new { id = UniqueKey, versao = CieloVersion.Version }, Xml.Fragment(req =>
+            xml.requisicao_cancelamento(new { id = UniqueKey, versao = CieloVersion.Version }, Xml.Fragment(req =>
             {
                 req.tid(_tid);
                 Affiliate.ToXml(req, Configuration);

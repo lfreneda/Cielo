@@ -32,7 +32,7 @@ namespace Cielo.Requests {
         public override string ToXml(bool indent) {
             dynamic xml = new Xml { UseDashInsteadUnderscore = true };
             xml.Declaration(encoding: "ISO-8859-1");
-            xml.requisicao_transacao(new { id = UniqueKey, versao = "1.3.0" }, Xml.Fragment(req => {
+            xml.requisicao_transacao(new { id = UniqueKey, versao = CieloVersion.Version }, Xml.Fragment(req => {
                 Affiliate.ToXml(req, Configuration);
 
                 if (_creditCardData != null) {

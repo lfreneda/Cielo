@@ -14,13 +14,15 @@ namespace Cielo.Requests.Entities
         public decimal Total { get; private set; }
         public DateTime Date { get; private set; }
         public string Description { get; private set; }
+        public string SoftDescriptor { get; set; }
 
-        public Order(string id, decimal total, DateTime date, string description = "")
+        public Order(string id, decimal total, DateTime date, string description = "", string softDescriptor = "")
         {
             Id = id;
             Total = total;
             Date = date;
             Description = description;
+            SoftDescriptor = softDescriptor;
         }
 
         public void ToXml(dynamic xmlParent, IConfiguration configuration = null)
@@ -38,7 +40,7 @@ namespace Cielo.Requests.Entities
                 c.data_hora(Date.ToCieloFormatDate());
                 c.descricao(Description);
                 c.idioma(lang.Description);
-                c.soft_descriptor("");
+                c.soft_descriptor(SoftDescriptor);
             }));
         }
     }

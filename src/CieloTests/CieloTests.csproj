@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckCancelTransactionRequestTests.cs" />
     <Compile Include="CheckTransactionResponseTests.cs" />
     <Compile Include="CheckTransactionRequestTests.cs" />
     <Compile Include="CieloServiceTests.cs" />
@@ -78,6 +79,9 @@
       <Project>{912073F3-3150-48CD-8A0C-582B03D7C052}</Project>
       <Name>Cielo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
