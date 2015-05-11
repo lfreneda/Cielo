@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CieloVersion.cs" />
     <Compile Include="Configuration\CustomCieloConfiguration.cs" />
     <Compile Include="Enums\SecurityCodeIndicator.cs" />
     <Compile Include="Enums\Status.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="CieloService.cs" />
     <Compile Include="Extensions\StatusExtensions.cs" />
     <Compile Include="ICieloService.cs" />
+    <Compile Include="Requests\CancelTransactionRequest.cs" />
     <Compile Include="Requests\Entities\Affiliate.cs" />
     <Compile Include="Requests\CieloRequest.cs" />
     <Compile Include="Requests\Entities\CreditCardData.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Requests\Entities\Order.cs" />
     <Compile Include="Requests\CreateTransactionRequest.cs" />
     <Compile Include="Requests\Entities\CreateTransactionOptions.cs" />
+    <Compile Include="Responses\CancelTransactionResponse.cs" />
     <Compile Include="Responses\CheckTransactionResponse.cs" />
     <Compile Include="Responses\CieloResponse.cs" />
     <Compile Include="Responses\Exceptions\ErrorResponse.cs" />

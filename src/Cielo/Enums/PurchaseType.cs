@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 
 namespace Cielo.Enums
@@ -8,6 +9,7 @@ namespace Cielo.Enums
         Credit,
         [Description("2")]
         StoreInstallmentPayment,
+        [Obsolete]
         [Description("3")]
         CreditCardCompanyInstallmentPayment,
         [Description("A")]

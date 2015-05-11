@@ -51,6 +51,18 @@ namespace Cielo {
             }
         }
 
+        public CancelTransactionResponse CancelTransaction(CancelTransactionRequest request) {
+            var responseContent = string.Empty;
+            try {
+                responseContent = Execute(request);
+                CreateExceptionIfError(responseContent);
+                return new CancelTransactionResponse(responseContent);
+            }
+            catch (Exception ex) {
+                throw new ResponseException(responseContent, ex);
+            }
+        }
+
         private static void CreateExceptionIfError(string responseContent) {
             if (responseContent.Contains("<erro xmlns=\"http://ecommerce.cbmp.com.br\">")) {
                 throw new ResponseException(new ErrorResponse(responseContent));

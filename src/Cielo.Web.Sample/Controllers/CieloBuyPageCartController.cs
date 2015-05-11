@@ -40,8 +40,18 @@ namespace Cielo.Web.Sample.Controllers
         public ActionResult Checkout()
         {
             var order = new Order(_randomOrderId, 4700.00m, DateTime.Now, "Goku e GokuSSJ");
+
+            //Crédito - A vista
             var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
             var options = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: true);
+
+            //Crédito - Parcelado Loja
+            //var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.StoreInstallmentPayment, 5);
+            //var options = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: true);
+
+            //Débito
+            //var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Debit);
+            //var options = new CreateTransactionOptions(AuthorizationType.AuthorizeAuthenticatedOrNot, capture: true);
             var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options, configuration: _configuration);
             CreateTransactionResponse response = _cieloService.CreateTransaction(createTransactionRequest);
 
@@ -56,6 +66,15 @@ namespace Cielo.Web.Sample.Controllers
             ViewBag.Status = response.Status.ToString();
 
             return View();
+        }
+
+        public ActionResult CancelOrder()
+        {
+            var cancelTransactionRequest = new CancelTransactionRequest((string)Session["tid"], _configuration);
+            CancelTransactionResponse response = _cieloService.CancelTransaction(cancelTransactionRequest);
+            ViewBag.Status = response.Status.ToString();
+
+            return RedirectToAction("Callback");
         }
     }
 }

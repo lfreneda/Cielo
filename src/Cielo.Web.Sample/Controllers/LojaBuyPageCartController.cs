@@ -79,6 +79,15 @@ namespace Cielo.Web.Sample.Controllers
             return View();
         }
 
+        public ActionResult CancelOrder()
+        {
+            var cancelTransactionRequest = new CancelTransactionRequest((string)Session["tid"], _configuration);
+            CancelTransactionResponse response = _cieloService.CancelTransaction(cancelTransactionRequest);
+            ViewBag.Status = response.Status.ToString();
+
+            return RedirectToAction("CheckStatus");
+        }
+
         public class CheckoutViewModel
         {
             public string SecurityCode { get; set; }
