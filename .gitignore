@@ -11,6 +11,8 @@ Tools/
 *.Publish.xml
 !NuGet.exe
 *.dbmdl
+.vs/
+packages/
 src/*.Publish.xml
 src/_ReSharper.*
 error-*.xml
