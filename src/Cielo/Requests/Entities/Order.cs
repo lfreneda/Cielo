@@ -28,10 +28,10 @@ namespace Cielo.Requests.Entities
         public void ToXml(dynamic xmlParent, IConfiguration configuration = null)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
-            var lang =
-                configuration.Language.GetType()
-                    .GetField(configuration.Language.ToString())
-                    .GetAttribute<DescriptionAttribute>();
+            var lang = configuration.Language.GetType()
+                                    .GetField(configuration.Language.ToString())
+                                    .GetAttribute<DescriptionAttribute>();
+
             xmlParent.dados_pedido(Xml.Fragment(c =>
             {
                 c.numero(Id);
