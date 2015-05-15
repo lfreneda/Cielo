@@ -9,6 +9,7 @@ Tools/
 *.pdb
 *.run
 *.Publish.xml
+Cielo.sln.ide/
 !NuGet.exe
 *.dbmdl
 .vs/

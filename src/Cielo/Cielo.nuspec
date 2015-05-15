@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>lfreneda</authors>
+    <owners>lfreneda</owners>
+    <licenseUrl>https://github.com/lfreneda/Cielo/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/lfreneda/Cielo</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/lfreneda/Cielo/master/docs/ico/cielo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Integração com webservice Cielo</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>cielo cartao debido credito pagamento parcelamento</tags>
+  </metadata>
+</package>

@@ -91,6 +91,7 @@
     <Compile Include="Responses\PropertyFromXmlConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Cielo.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
