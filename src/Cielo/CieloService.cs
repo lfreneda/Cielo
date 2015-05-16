@@ -13,10 +13,11 @@ namespace Cielo {
         public CieloService(string endPointUrl = null) {
             if (string.IsNullOrEmpty(endPointUrl)) endPointUrl = ConfigurationManager.AppSettings["cielo.webservice.url"];
             if (string.IsNullOrEmpty(endPointUrl)) throw new NoNullAllowedException("Cielo service endpoint was not provided and its not configured");
-            _endPointUrl = endPointUrl;
+            _endPointUrl = endPointUrl;            
         }
 
         protected virtual string Execute(ICieloRequest cieloRequest) {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
             var client = new RestClient(_endPointUrl);
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Xml };
             var mensagemValue = cieloRequest.ToXml(false);
