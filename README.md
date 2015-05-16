@@ -1,6 +1,10 @@
 Cielo
 =====
 
+[![Build status](https://ci.appveyor.com/api/projects/status/9nulf7grb2s8um37?svg=true)](https://ci.appveyor.com/project/lfreneda/cielo)
+[![Nuget version](https://img.shields.io/nuget/v/Cielo.svg)](https://www.nuget.org/packages/Cielo/)
+[![Nuget downloads](https://img.shields.io/nuget/dt/Cielo.svg)](https://www.nuget.org/packages/Cielo/)
+
 Integração com o Cielo e-Commerce webservice.
 
 A integração pretende cobrir apenas compras por cartão de créditos sem parcelamento.
