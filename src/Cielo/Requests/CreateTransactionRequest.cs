@@ -5,22 +5,22 @@ using Cielo.Configuration;
 using Cielo.Requests.Entities;
 using DynamicBuilder;
 
-namespace Cielo.Requests {
-
-    public class CreateTransactionRequest : CieloRequest {
-        private readonly PaymentMethod _paymentMethod;
-        private readonly CreateTransactionOptions _options;
+namespace Cielo.Requests
+{
+    public class CreateTransactionRequest : CieloRequest
+    {
         private readonly CreditCardData _creditCardData;
+        private readonly CreateTransactionOptions _options;
         private readonly Order _order;
-        public Guid UniqueKey { get; set; }
+        private readonly PaymentMethod _paymentMethod;
 
         public CreateTransactionRequest(
-                Order order,
-                PaymentMethod paymentMethod,
-                CreateTransactionOptions options,
-                CreditCardData creditCardData = null,
-                IConfiguration configuration = null) : base(configuration) {
-
+            Order order,
+            PaymentMethod paymentMethod,
+            CreateTransactionOptions options,
+            CreditCardData creditCardData = null,
+            IConfiguration configuration = null) : base(configuration)
+        {
             _paymentMethod = paymentMethod;
             _options = options;
             _creditCardData = creditCardData;
@@ -29,13 +29,18 @@ namespace Cielo.Requests {
             UniqueKey = Guid.NewGuid();
         }
 
-        public override string ToXml(bool indent) {
-            dynamic xml = new Xml { UseDashInsteadUnderscore = true };
+        public Guid UniqueKey { get; set; }
+
+        public override string ToXml(bool indent)
+        {
+            dynamic xml = new Xml {UseDashInsteadUnderscore = true};
             xml.Declaration(encoding: "ISO-8859-1");
-            xml.requisicao_transacao(new { id = UniqueKey, versao = CieloVersion.Version }, Xml.Fragment(req => {
+            xml.requisicao_transacao(new {id = UniqueKey, versao = CieloVersion.Version}, Xml.Fragment(req =>
+            {
                 Affiliate.ToXml(req, Configuration);
 
-                if (_creditCardData != null) {
+                if (_creditCardData != null)
+                {
                     _creditCardData.ToXml(req);
                 }
 
@@ -44,7 +49,7 @@ namespace Cielo.Requests {
                 _paymentMethod.ToXml(req);
 
                 req.url_retorno(Configuration.ReturnUrl);
-                req.autorizar((int)_options.AuthorizationType);
+                req.autorizar((int) _options.AuthorizationType);
                 req.capturar(_options.Capture.ToString(CultureInfo.InvariantCulture).ToLower());
                 req.gerar_token(_options.GenerateToken.ToString(CultureInfo.InvariantCulture).ToLower());
             }));
@@ -52,7 +57,8 @@ namespace Cielo.Requests {
             return xml.ToString(indent);
         }
 
-        public string ToXmlWithoutSensitiveData(bool indent) {
+        public string ToXmlWithoutSensitiveData(bool indent)
+        {
             var replaceSensitiveDataPattern = new Regex("<dados-portador>(.*)</dados-portador>");
             return replaceSensitiveDataPattern.Replace(ToXml(indent), "");
         }

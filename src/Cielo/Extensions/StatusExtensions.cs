@@ -13,7 +13,7 @@ namespace Cielo.Extensions
 
         public static Status ToStatus(this int enumCode)
         {
-            return (Status)enumCode;
+            return (Status) enumCode;
         }
     }
 }

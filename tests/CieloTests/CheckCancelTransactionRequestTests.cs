@@ -7,7 +7,6 @@ using NUnit.Framework;
 
 namespace CieloTests
 {
- 
     [TestFixture]
     public class CheckCancelTransactionRequestTests
     {
@@ -29,10 +28,10 @@ namespace CieloTests
             };
 
             cancelTransactionRequest
-                            .ToXml(indent: false)
-                            .RemoveNewLinesAndSpaces()
-                            .Should()
-                            .Be(ExpectedXml.RemoveNewLinesAndSpaces());
+                .ToXml(false)
+                .RemoveNewLinesAndSpaces()
+                .Should()
+                .Be(ExpectedXml.RemoveNewLinesAndSpaces());
         }
     }
 }

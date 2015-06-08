@@ -5,26 +5,26 @@
 <html>
 <head>
     <title>Shopping Cart</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="container">
-        <br />
-        <br />
-        <h1>Shopping Cart</h1>
-        <br />
-        @Html.Partial("_FakeShoppingCart")
+<div class="container">
+    <br/>
+    <br/>
+    <h1>Shopping Cart</h1>
+    <br/>
+    @Html.Partial("_FakeShoppingCart")
 
-        @using (Html.BeginForm("Checkout", "CieloBuyPageCart", FormMethod.Post))
-        {
-            <div class="row">
-                <div class="pull-right">
-                    <button class="btn btn-primary" disabled="disabled">Continue shopping</button>
-                    <button class="btn btn-primary" type="submit">Checkout</button>
-                </div>
+    @using (Html.BeginForm("Checkout", "CieloBuyPageCart", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="pull-right">
+                <button class="btn btn-primary" disabled="disabled">Continue shopping</button>
+                <button class="btn btn-primary" type="submit">Checkout</button>
             </div>
-        }
-    </div>
+        </div>
+    }
+</div>
 
 </body>
 </html>
