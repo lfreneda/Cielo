@@ -5,26 +5,16 @@ using Cielo.Responses.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace CieloTests {
-
+namespace CieloTests
+{
     [TestFixture]
-    public class CieloServiceTests {
-
-        public class CieloServiceFake : CieloService {
-
-            public CieloServiceFake()
-                : base("http://endpoint.fake.br") { }
-
-            public string ReturnXml { get; set; }
-
-            protected override string Execute(ICieloRequest cieloRequest) {
-                return ReturnXml;
-            }
-        }
-
+    public class CieloServiceTests
+    {
         [Test]
-        public void CreateTransaction_WhenXmlResponseDoesNotContainError_ShouldReturnCreateTransactionResponse() {
-            var service = new CieloServiceFake {
+        public void CreateTransaction_WhenXmlResponseDoesNotContainError_ShouldReturnCreateTransactionResponse()
+        {
+            var service = new CieloServiceFake
+            {
                 ReturnXml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
                                                         <transacao versao=""1.3.0"" id=""0dcb285b-fbb2-491c-ac58-d49e3b8b97c3"" xmlns=""http://ecommerce.cbmp.com.br"">
                                                           <tid>1001734898001D871001</tid>
@@ -51,8 +41,10 @@ namespace CieloTests {
         }
 
         [Test]
-        public void CreateTransaction_WhenXmlResponseContainError_ShouldThrowsResponseException() {
-            var service = new CieloServiceFake {
+        public void CreateTransaction_WhenXmlResponseContainError_ShouldThrowsResponseException()
+        {
+            var service = new CieloServiceFake
+            {
                 ReturnXml = @"<erro xmlns=""http://ecommerce.cbmp.com.br"">
                                   <codigo>014</codigo>
                                   <mensagem>Autorização Direta é permitida apenas para crédito.</mensagem>
@@ -67,8 +59,10 @@ namespace CieloTests {
         }
 
         [Test]
-        public void CheckTransaction_WhenXmlResponseContainError_ShouldThrowsResponseExeception() {
-            var service = new CieloServiceFake {
+        public void CheckTransaction_WhenXmlResponseContainError_ShouldThrowsResponseExeception()
+        {
+            var service = new CieloServiceFake
+            {
                 ReturnXml = @"<erro xmlns=""http://ecommerce.cbmp.com.br"">
                                   <codigo>014</codigo>
                                   <mensagem>Autorização Direta é permitida apenas para crédito.</mensagem>
@@ -84,8 +78,10 @@ namespace CieloTests {
         }
 
         [Test]
-        public void CheckTransaction_WhenXmlResponseDoesNotContainError_ShouldReturnCheckTransactionResponse() {
-            var service = new CieloServiceFake {
+        public void CheckTransaction_WhenXmlResponseDoesNotContainError_ShouldReturnCheckTransactionResponse()
+        {
+            var service = new CieloServiceFake
+            {
                 ReturnXml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
                                                         <transacao versao=""1.3.0"" id=""0dcb285b-fbb2-491c-ac58-d49e3b8b97c3"" xmlns=""http://ecommerce.cbmp.com.br"">
                                                           <tid>1001734898001D871001</tid>
@@ -109,6 +105,21 @@ namespace CieloTests {
 
             var response = service.CheckTransaction(new CheckTransactionRequest("Tid"));
             response.Should().BeOfType<CheckTransactionResponse>();
+        }
+
+        public class CieloServiceFake : CieloService
+        {
+            public CieloServiceFake()
+                : base("http://endpoint.fake.br")
+            {
+            }
+
+            public string ReturnXml { get; set; }
+
+            protected override string Execute(ICieloRequest cieloRequest)
+            {
+                return ReturnXml;
+            }
         }
     }
 }

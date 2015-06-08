@@ -9,12 +9,6 @@ namespace Cielo.Requests.Entities
 {
     public class Order : ICieloPartialRequest
     {
-        public string Id { get; private set; }
-        public decimal Total { get; private set; }
-        public DateTime Date { get; private set; }
-        public string Description { get; private set; }
-        public string SoftDescriptor { get; set; }
-
         public Order(string id, decimal total, DateTime date, string description = "", string softDescriptor = "")
         {
             Id = id;
@@ -24,12 +18,18 @@ namespace Cielo.Requests.Entities
             SoftDescriptor = softDescriptor;
         }
 
+        public string Id { get; private set; }
+        public decimal Total { get; private set; }
+        public DateTime Date { get; private set; }
+        public string Description { get; private set; }
+        public string SoftDescriptor { get; set; }
+
         public void ToXml(dynamic xmlParent, IConfiguration configuration = null)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
             var lang = configuration.Language.GetType()
-                                    .GetField(configuration.Language.ToString())
-                                    .GetAttribute<DescriptionAttribute>();
+                .GetField(configuration.Language.ToString())
+                .GetAttribute<DescriptionAttribute>();
 
             xmlParent.dados_pedido(Xml.Fragment(c =>
             {

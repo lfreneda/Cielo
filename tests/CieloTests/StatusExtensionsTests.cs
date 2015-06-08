@@ -33,7 +33,8 @@ namespace CieloTests
         [TestCase("9", Status.Canceled)]
         [TestCase("10", Status.AuthenticationProgress)]
         [TestCase("12", Status.CancellationProgress)]
-        public void GivenStringCodeAsString_ShouldResultInStatusExpected(string statusCodeAsString, Status statusExpected)
+        public void GivenStringCodeAsString_ShouldResultInStatusExpected(string statusCodeAsString,
+            Status statusExpected)
         {
             statusCodeAsString.ToStatus().Should().Be(statusExpected);
         }

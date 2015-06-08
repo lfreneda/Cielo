@@ -9,7 +9,6 @@ namespace Cielo.Responses
     public class CieloResponse<T> : ICieloResponse
     {
         private readonly XDocument _xdocument;
-        public string Content { get; private set; }
 
         protected CieloResponse(string content)
         {
@@ -17,7 +16,10 @@ namespace Cielo.Responses
             _xdocument = XDocument.Parse(Content);
         }
 
-        public void Map(Expression<Func<T, object>> propertyExpression, string xmlNodeName, IPropertyFromXmlConverter converter = null)
+        public string Content { get; private set; }
+
+        public void Map(Expression<Func<T, object>> propertyExpression, string xmlNodeName,
+            IPropertyFromXmlConverter converter = null)
         {
             var node = _xdocument.Descendants(XName.Get(xmlNodeName, "http://ecommerce.cbmp.com.br")).FirstOrDefault();
             if (node == null) return;
@@ -35,8 +37,8 @@ namespace Cielo.Responses
             var propertyName = (memberExpression.Member as PropertyInfo).Name;
 
             var value = (converter != null) ? converter.Convert(node.Value) : node.Value;
-            if (this.GetType().GetProperty(propertyName) == null) return;
-            this.GetType().GetProperty(propertyName).SetValue(this, value, null);
+            if (GetType().GetProperty(propertyName) == null) return;
+            GetType().GetProperty(propertyName).SetValue(this, value, null);
         }
     }
 }

@@ -4,8 +4,8 @@ namespace Cielo.Requests.Entities
 {
     public class CreditCardExpiration
     {
-        private readonly short _year;
         private readonly byte _month;
+        private readonly short _year;
 
         public CreditCardExpiration(short year, byte month)
         {

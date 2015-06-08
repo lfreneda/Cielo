@@ -8,15 +8,15 @@ namespace CieloTests.Helpers
     {
         public static string RemoveNewLinesAndSpaces(this string str)
         {
-            return str.ExceptChars(new HashSet<char>(new[] { ' ', '\t', '\n', '\r' }));
+            return str.ExceptChars(new HashSet<char>(new[] {' ', '\t', '\n', '\r'}));
         }
 
         public static string ExceptChars(this string str, IEnumerable<char> toExclude)
         {
             var sb = new StringBuilder(str.Length);
-            for (int i = 0; i < str.Length; i++)
+            for (var i = 0; i < str.Length; i++)
             {
-                char c = str[i];
+                var c = str[i];
                 if (!toExclude.Contains(c))
                     sb.Append(c);
             }

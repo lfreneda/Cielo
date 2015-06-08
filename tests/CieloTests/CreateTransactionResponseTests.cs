@@ -7,7 +7,6 @@ namespace CieloTests
     [TestFixture]
     public class CreateTransactionResponseTests
     {
-        private CreateTransactionResponse _createTransactionResponse;
         private const string ExpectedResponse = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
                                     <transacao versao=""1.3.0"" id=""af32f93c-5e9c-4f44-9478-ccc5aca9319e"" xmlns=""http://ecommerce.cbmp.com.br"">
                                         <tid>100699306908642F1001</tid>
@@ -45,6 +44,7 @@ namespace CieloTests
                                         </autorizacao>
                                         <url-autenticacao>https://ecommerce.cielo.com.br/web/index.cbmp?id=a783251</url-autenticacao>
                                     </transacao>";
+        private CreateTransactionResponse _createTransactionResponse;
 
         [SetUp]
         public void SetUp()
@@ -61,7 +61,8 @@ namespace CieloTests
         [Test]
         public void GivenAXmlResponse_UrlAuthenticationShouldBeAsExpected()
         {
-            _createTransactionResponse.AuthenticationUrl.Should().Be("https://ecommerce.cielo.com.br/web/index.cbmp?id=a783251");
+            _createTransactionResponse.AuthenticationUrl.Should()
+                .Be("https://ecommerce.cielo.com.br/web/index.cbmp?id=a783251");
         }
 
         [Test]
@@ -73,7 +74,9 @@ namespace CieloTests
         [Test]
         public void ToString_ShouldFormatTidAndPan()
         {
-            _createTransactionResponse.ToString().Should().Be("Tid: 100699306908642F1001, Pan: uv9yI5tkhX9jpuCt+dfrtoSVM4U3gIjvrcwMBfZcadE=");
+            _createTransactionResponse.ToString()
+                .Should()
+                .Be("Tid: 100699306908642F1001, Pan: uv9yI5tkhX9jpuCt+dfrtoSVM4U3gIjvrcwMBfZcadE=");
         }
     }
 }

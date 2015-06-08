@@ -7,11 +7,11 @@ namespace CieloTests
     [TestFixture]
     public class ResponseErrorTests
     {
-        private ErrorResponse _errorResponse;
         private const string XmlResponse = @"<erro xmlns=""http://ecommerce.cbmp.com.br"">
                                                 <codigo>014</codigo>
                                                 <mensagem>Autorização Direta é permitida apenas para crédito.</mensagem>
                                             </erro>";
+        private ErrorResponse _errorResponse;
 
         [SetUp]
         public void SetUp()

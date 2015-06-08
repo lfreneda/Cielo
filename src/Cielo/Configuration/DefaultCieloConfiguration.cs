@@ -23,7 +23,7 @@ namespace Cielo.Configuration
 
         public Language Language
         {
-            get { return (Language)Convert.ToInt32(ConfigurationManager.AppSettings["cielo.language.id"]); }
+            get { return (Language) Convert.ToInt32(ConfigurationManager.AppSettings["cielo.language.id"]); }
         }
 
         public string CurrencyId

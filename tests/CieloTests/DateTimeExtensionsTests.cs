@@ -26,6 +26,5 @@ namespace CieloTests
             var transactionDate = new DateTime(1988, 05, 15, 23, 01, 08);
             transactionDate.ToCieloFormatDate().Should().Be("1988-05-15T23:01:08");
         }
-
     }
 }

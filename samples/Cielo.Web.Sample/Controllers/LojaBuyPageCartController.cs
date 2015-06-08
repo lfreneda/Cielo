@@ -5,7 +5,6 @@ using Cielo.Configuration;
 using Cielo.Enums;
 using Cielo.Requests;
 using Cielo.Requests.Entities;
-using Cielo.Responses;
 using Cielo.Responses.Exceptions;
 
 namespace Cielo.Web.Sample.Controllers
@@ -13,8 +12,8 @@ namespace Cielo.Web.Sample.Controllers
     public class LojaBuyPageCartController : Controller
     {
         private CieloService _cieloService;
-        private string _randomOrderId;
         private CustomCieloConfiguration _configuration;
+        private string _randomOrderId;
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -46,14 +45,17 @@ namespace Cielo.Web.Sample.Controllers
         [HttpPost]
         public ActionResult Checkout(CheckoutViewModel creditCardValues)
         {
-            var yearExpiration = Convert.ToInt16((string)creditCardValues.ExpirationYear);
-            var monthExpiration = Convert.ToByte((string)creditCardValues.ExpirationMonth);
+            var yearExpiration = Convert.ToInt16(creditCardValues.ExpirationYear);
+            var monthExpiration = Convert.ToByte(creditCardValues.ExpirationMonth);
 
             var order = new Order(_randomOrderId, 4700.00m, DateTime.Now, "Goku e GokuSSJ");
             var paymentMethod = new PaymentMethod(CreditCard.MasterCard, PurchaseType.Credit);
-            var options = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, capture: true);
-            var creditCardData = new CreditCardData(creditCardValues.CreditCardNumber, new CreditCardExpiration(yearExpiration, monthExpiration), SecurityCodeIndicator.Sent, creditCardValues.SecurityCode);
-            var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options, creditCardData, _configuration);
+            var options = new CreateTransactionOptions(AuthorizationType.AuthorizeSkippingAuthentication, true);
+            var creditCardData = new CreditCardData(creditCardValues.CreditCardNumber,
+                new CreditCardExpiration(yearExpiration, monthExpiration), SecurityCodeIndicator.Sent,
+                creditCardValues.SecurityCode);
+            var createTransactionRequest = new CreateTransactionRequest(order, paymentMethod, options, creditCardData,
+                _configuration);
 
             try
             {
@@ -70,8 +72,8 @@ namespace Cielo.Web.Sample.Controllers
 
         public ActionResult CheckStatus()
         {
-            var checkTransactionRequest = new CheckTransactionRequest((string)Session["tid"], _configuration);
-            CheckTransactionResponse response = _cieloService.CheckTransaction(checkTransactionRequest);
+            var checkTransactionRequest = new CheckTransactionRequest((string) Session["tid"], _configuration);
+            var response = _cieloService.CheckTransaction(checkTransactionRequest);
             ViewBag.Status = response.Status.ToString();
 
             return View();
@@ -79,8 +81,8 @@ namespace Cielo.Web.Sample.Controllers
 
         public ActionResult CancelOrder()
         {
-            var cancelTransactionRequest = new CancelTransactionRequest((string)Session["tid"], _configuration);
-            CancelTransactionResponse response = _cieloService.CancelTransaction(cancelTransactionRequest);
+            var cancelTransactionRequest = new CancelTransactionRequest((string) Session["tid"], _configuration);
+            var response = _cieloService.CancelTransaction(cancelTransactionRequest);
             ViewBag.Status = response.Status.ToString();
 
             return RedirectToAction("CheckStatus");
