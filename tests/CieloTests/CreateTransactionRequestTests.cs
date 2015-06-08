@@ -1,9 +1,9 @@
 ﻿using System;
-using Awesomely.Extensions;
 using Cielo.Enums;
 using Cielo.Requests;
 using Cielo.Requests.Entities;
 using CieloTests.Configuration;
+using CieloTests.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 

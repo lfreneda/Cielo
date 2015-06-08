@@ -1,10 +1,9 @@
-﻿using Awesomely.Extensions;
-using Cielo.Configuration;
+﻿using System;
 using Cielo.Requests;
 using CieloTests.Configuration;
+using CieloTests.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
-using System;
 
 namespace CieloTests
 {

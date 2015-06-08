@@ -1,5 +1,4 @@
 using System.Globalization;
-using Awesomely.Extensions;
 
 namespace Cielo.Requests.Entities
 {
@@ -17,7 +16,7 @@ namespace Cielo.Requests.Entities
         public override string ToString()
         {
             var monthAsString = _month.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0');
-            return "{0}{1}".FormatWith(_year, monthAsString);
+            return string.Format("{0}{1}", _year, monthAsString);
         }
     }
 }

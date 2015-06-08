@@ -1,7 +1,7 @@
 using System;
-using Awesomely.Extensions;
 using Cielo.Requests;
 using CieloTests.Configuration;
+using CieloTests.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 
