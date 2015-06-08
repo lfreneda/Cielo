@@ -14,5 +14,8 @@
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>cielo cartao debido credito pagamento parcelamento</tags>
+    <dependencies>
+      <dependency id="DynamicBuilder" version="1.0.0" />
+    </dependencies>
   </metadata>
 </package>

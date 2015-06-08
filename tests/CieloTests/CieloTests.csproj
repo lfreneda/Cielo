@@ -36,8 +36,9 @@
     <Reference Include="Awesomely">
       <HintPath>..\..\lib\Awesomely.dll</HintPath>
     </Reference>
-    <Reference Include="DynamicBuilder">
-      <HintPath>..\..\lib\DynamicBuilder.dll</HintPath>
+    <Reference Include="DynamicBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\DynamicBuilder.1.0.0.0\lib\net40\DynamicBuilder.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions">
       <HintPath>..\..\packages\FluentAssertions.3.3.0\lib\net40\FluentAssertions.dll</HintPath>
