@@ -7,7 +7,6 @@ Cielo
 
 Integração com o Cielo e-Commerce webservice.
 
-A integração pretende cobrir apenas compras por cartão de créditos sem parcelamento.
 Pull requests são bem vindos \o\~
 
 Projeto de exemplo na solução.
@@ -87,7 +86,7 @@ O objeto **response** (*CheckTransactionResponse* ou *CancelTransactionResponse*
 
 1. Crie um fork
 2. git clone https://github.com/(seu-usuario)/Cielo/
-3. git checkout -b <nome-da-sua-funcionalidade>
+3. git checkout -b (nome-da-sua-funcionalidade)
 4. git add --all && git commit -m "Descrição do que foi feito"
-5. git push origin <nome-da-sua-funcionalidade>
+5. git push origin (nome-da-sua-funcionalidade)
 6. Crie um pull request
