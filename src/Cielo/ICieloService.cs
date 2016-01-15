@@ -7,5 +7,6 @@ namespace Cielo
     {
         CreateTransactionResponse CreateTransaction(CreateTransactionRequest request);
         CheckTransactionResponse CheckTransaction(CheckTransactionRequest request);
+        CancelTransactionResponse CancelTransaction(CancelTransactionRequest request);
     }
 }
